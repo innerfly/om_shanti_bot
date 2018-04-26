@@ -1,6 +1,11 @@
 {
     "name": "yourproject/yourproject",
     "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Omshanti\\": "Classes/"
+        }
+    },
     "require": {
         "php": ">=5.5",
         "longman/telegram-bot": "*"

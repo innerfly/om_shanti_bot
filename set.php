@@ -4,10 +4,10 @@ require_once 'bootstrap.php';
 
 try {
     // Create Telegram API object
-    $telegram = new Longman\TelegramBot\Telegram($config['bot_api_key'], $config['bot_username']);
+    $telegram = new Longman\TelegramBot\Telegram($cfg['bot_api_key'], $cfg['bot_username']);
 
     // Set webhook
-    $result = $telegram->setWebhook($config['hook_url'], ['certificate' => '/etc/nginx/ssl/PUBLIC.pem']);
+    $result = $telegram->setWebhook($cfg['hook_url'], ['certificate' => '/etc/nginx/ssl/PUBLIC.pem']);
 
     if ($result->isOk()) {
         echo $result->getDescription();

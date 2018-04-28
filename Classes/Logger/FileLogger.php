@@ -1,6 +1,6 @@
 <?php
 
-namespace Omshanti;
+namespace Omshanti\Logger;
 
 class FileLogger implements LoggerInterface
 {

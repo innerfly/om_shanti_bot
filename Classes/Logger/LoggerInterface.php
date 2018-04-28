@@ -4,8 +4,7 @@
  * Date: 28.04.2018
  */
 
-namespace Omshanti;
-
+namespace Omshanti\Logger;
 
 interface LoggerInterface
 {

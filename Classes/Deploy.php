@@ -2,6 +2,8 @@
 
 namespace Omshanti;
 
+use Omshanti\Logger\LoggerInterface;
+
 class Deploy
 {
     private $logger;

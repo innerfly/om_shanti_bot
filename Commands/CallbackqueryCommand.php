@@ -49,10 +49,20 @@ class CallbackqueryCommand extends SystemCommand
         $callback_query_id = $callback_query->getId();
         $callback_data     = $callback_query->getData();
 
+        switch ($callback_data){
+            case 'weather':
+                $text = '';
+                break;
+            default:
+                $text = 'Hello World!';
+                break;
+        }
+
         $data = [
             'callback_query_id' => $callback_query_id,
-            'text'              => 'Hello World!',
-            'show_alert'        => $callback_data === 'thumb up',
+            'text'              => $text,
+//            'show_alert'        => $callback_data === 'thumb up',
+            'show_alert'        => true,
             'cache_time'        => 5,
         ];
 

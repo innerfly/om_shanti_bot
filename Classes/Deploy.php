@@ -73,7 +73,7 @@ class Deploy
                 chmod($filename, 0666);
             }
 
-            file_put_contents($filename, $row . PHP_EOL, FILE_APPEND);
+            file_put_contents($filename, $row . "\r\n", FILE_APPEND);
         }
     }
 

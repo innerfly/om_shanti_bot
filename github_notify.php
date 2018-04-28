@@ -4,11 +4,12 @@ require_once 'bootstrap.php';
 
 //    $input = file_get_contents('php://input');
 
-$deploy = new Omshanti\Deploy();
+$logger = new Omshanti\FileLogger();
+$deploy = new Omshanti\Deploy($logger);
 $deploy->execute();
 
 header("HTTP/1.1 200 OK");
 
-echo nl2br(implode(' ', $deploy->getMessages()));
+echo nl2br(implode(' ', $logger->getMessages()));
 
 exit;

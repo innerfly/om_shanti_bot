@@ -26,29 +26,19 @@ try {
     TelegramLog::initUpdateLog(__DIR__ . "/logs/update.log");
 
 
-    CallbackqueryCommand::addCallbackHandler(function (CallbackQuery $query) {
+    CallbackqueryCommand::addCallbackHandler(function (CallbackQuery $query) use($telegram)  {
         $command = $query->getData();
-        $data = [
-            'chat_id' => $query->getMessage()->getChat()->getId(),
-            'text' => $command,
-        ];
-        Request::sendMessage($data);
-
-        /*switch ($data) {
-            case "help":
-                $data = [
-                    'chat_id' => $query->getMessage()->getChat()->getId(),
-                    'text' => 'help'
-                ];
-                Request::sendMessage($data);
-                break;
-
-        }*/
+//        $data = [
+//            'chat_id' => $query->getMessage()->getChat()->getId(),
+//            'text' => $command,
+//        ];
+        $telegram->executeCommand($command);
+//        Request::sendMessage($data);
     });
 
 
     // Requests Limiter (tries to prevent reaching Telegram API limits)
-//    $telegram->enableLimiter();
+    //    $telegram->enableLimiter();
 
     // Handle telegram webhook request
     $res = $telegram->handle();

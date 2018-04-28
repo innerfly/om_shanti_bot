@@ -2,7 +2,9 @@
 
 use Longman\TelegramBot\Commands\SystemCommands\CallbackqueryCommand;
 use Longman\TelegramBot\Entities\CallbackQuery;
+use Longman\TelegramBot\Telegram;
 use Longman\TelegramBot\TelegramLog;
+use Longman\TelegramBot\Request;
 
 require_once 'bootstrap.php';
 
@@ -18,18 +20,38 @@ try {
 
     $telegram->setCommandConfig('weather', ['owm_api_key' => $cfg['weather_api_key']]);
 
-
     // Logging (Error, Debug and Raw Updates)
     TelegramLog::initErrorLog(__DIR__ . "/logs/error.log");
     TelegramLog::initDebugLog(__DIR__ . "/logs/debug.log");
     TelegramLog::initUpdateLog(__DIR__ . "/logs/update.log");
+
+
+    CallbackqueryCommand::addCallbackHandler(function (CallbackQuery $query) {
+        $command = $query->getData();
+        $data = [
+            'chat_id' => $query->getMessage()->getChat()->getId(),
+            'text' => $command,
+        ];
+        Request::sendMessage($data);
+
+        /*switch ($data) {
+            case "help":
+                $data = [
+                    'chat_id' => $query->getMessage()->getChat()->getId(),
+                    'text' => 'help'
+                ];
+                Request::sendMessage($data);
+                break;
+
+        }*/
+    });
+
 
     // Requests Limiter (tries to prevent reaching Telegram API limits)
 //    $telegram->enableLimiter();
 
     // Handle telegram webhook request
     $res = $telegram->handle();
-    file_put_contents(__DIR__ . '/logs/dbg.log', print_r($res,1) . PHP_EOL, FILE_APPEND | LOCK_EX);
 
 } catch (Longman\TelegramBot\Exception\TelegramException $e) {
     // Silence is golden!

@@ -10,7 +10,7 @@ require_once 'bootstrap.php';
 
 try {
     // Create Telegram API object
-    $telegram = new Longman\TelegramBot\Telegram($cfg['bot_api_key'], $cfg['bot_username']);
+    $telegram = new Telegram($cfg['bot_api_key'], $cfg['bot_username']);
 
     $commands_paths = [__DIR__ . '/Commands/',];
     // Add commands paths containing your custom commands
@@ -25,17 +25,10 @@ try {
     TelegramLog::initDebugLog(__DIR__ . "/logs/debug.log");
     TelegramLog::initUpdateLog(__DIR__ . "/logs/update.log");
 
-
-    CallbackqueryCommand::addCallbackHandler(function (CallbackQuery $query) use($telegram)  {
-        $command = $query->getData();
-//        $data = [
-//            'chat_id' => $query->getMessage()->getChat()->getId(),
-//            'text' => $command,
-//        ];
-        $telegram->executeCommand($command);
-//        Request::sendMessage($data);
-    });
-
+//    CallbackqueryCommand::addCallbackHandler(function (CallbackQuery $query) use ($telegram) {
+//        $command = $query->getData();
+//        $telegram->executeCommand($command);
+//    });
 
     // Requests Limiter (tries to prevent reaching Telegram API limits)
     //    $telegram->enableLimiter();

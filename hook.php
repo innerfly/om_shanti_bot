@@ -16,6 +16,9 @@ try {
     // Enable admin users
     $telegram->enableAdmins($cfg['admin_users']);
 
+    $telegram->setCommandConfig('weather', ['owm_api_key' => $cfg['weather_api_key']]);
+
+
     // Logging (Error, Debug and Raw Updates)
     TelegramLog::initErrorLog(__DIR__ . "/logs/error.log");
     TelegramLog::initDebugLog(__DIR__ . "/logs/debug.log");

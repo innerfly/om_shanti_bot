@@ -135,6 +135,7 @@ class WeatherCommand extends UserCommand
 
         if (trim($this->getConfig('owm_api_key'))) {
             $location = trim($message->getText(true));
+            $location = $location ? $location : 'Moscow';
             if ($location !== '') {
                 if ($weather_data = json_decode($this->getWeatherData($location), true)) {
                     $text = $this->getWeatherString($weather_data);

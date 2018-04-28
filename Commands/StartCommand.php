@@ -11,6 +11,7 @@
 namespace Longman\TelegramBot\Commands\SystemCommands;
 
 use Longman\TelegramBot\Commands\SystemCommand;
+use Longman\TelegramBot\Commands\UserCommands\WeatherCommand;
 use Longman\TelegramBot\Request;
 
 /**
@@ -56,7 +57,7 @@ class StartCommand extends SystemCommand
         $message = $this->getMessage();
 
         $chat_id = $message->getChat()->getId();
-        $text    = 'Hi there!' . PHP_EOL . 'Type /help to see all commands!';
+        $text    = '🕉 Namaste! 🕉' . PHP_EOL . '/weather or /help to see all commands!';
 
         $data = [
             'chat_id' => $chat_id,

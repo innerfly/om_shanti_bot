@@ -6,6 +6,7 @@ require_once 'bootstrap.php';
 
 $deploy = new Omshanti\Deploy();
 $deploy->execute();
+echo nl2br($deploy->getMessages());
 
 header("HTTP/1.1 200 OK");
 exit;

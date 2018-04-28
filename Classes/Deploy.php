@@ -77,4 +77,12 @@ class Deploy
         }
     }
 
+    /**
+     * @return array
+     */
+    public function getMessages()
+    {
+        return $this->_messages;
+    }
+
 }

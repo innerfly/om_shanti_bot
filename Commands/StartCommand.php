@@ -59,9 +59,17 @@ class StartCommand extends SystemCommand
         $chat_id = $message->getChat()->getId();
         $text    = '🕉 Namaste! 🕉' . PHP_EOL . '/weather or /help to see all commands!';
 
+        $inline_keyboard = new InlineKeyboard(
+            [
+                ['text' => 'callback', 'callback_data' => 'weather'],
+                ['text' => 'open url', 'url' => 'https://github.com/php-telegram-bot/core'],
+            ]
+        );
+
         $data = [
             'chat_id' => $chat_id,
             'text'    => $text,
+            'reply_markup' => $inline_keyboard,
         ];
 
         return Request::sendMessage($data);

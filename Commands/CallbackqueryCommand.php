@@ -50,18 +50,18 @@ class CallbackqueryCommand extends SystemCommand
         $callback_data     = $callback_query->getData();
 
         $command = $callback_data;
-//        $text = "$callback_data: Hello World!";
 
-        if ($this->getTelegram()->getCommandObject($command)) {
+//        if ($this->getTelegram()->getCommandObject($command)) {
             return $this->getTelegram()->executeCommand($command);
-        }
+//        }
 
-//        $data = [
-//            'callback_query_id' => $callback_query_id,
-//            'text'              => $text,
-//            'show_alert'        => true,
-//            'cache_time'        => 5,
-//        ];
+        $text = "$callback_data: Hello World!";
+        $data = [
+            'callback_query_id' => $callback_query_id,
+            'text'              => $text,
+            'show_alert'        => true,
+            'cache_time'        => 5,
+        ];
 
         return Request::answerCallbackQuery($data);
     }

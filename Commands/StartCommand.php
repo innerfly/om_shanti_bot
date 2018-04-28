@@ -61,12 +61,6 @@ class StartCommand extends SystemCommand
 
         $text = '🕉 Namaste! 🕉' . PHP_EOL . '/weather or /help to see all commands!';
 
-        $inline_keyboard = new InlineKeyboard(
-            [
-                ['text' => 'open url', 'url' => 'https://github.com/php-telegram-bot/core'],
-            ]
-        );
-
         $inline_keyboard = new InlineKeyboard([
             ['text' => 'Weather', 'callback_data' => 'weather'],
             ['text' => 'Start', 'callback_data' => 'start'],

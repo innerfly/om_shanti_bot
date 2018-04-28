@@ -49,17 +49,12 @@ class CallbackqueryCommand extends SystemCommand
         $callback_query_id = $callback_query->getId();
         $callback_data     = $callback_query->getData();
 
-        $command = $callback_data;
-
-//        if ($this->getTelegram()->getCommandObject($command)) {
-            return $this->getTelegram()->executeCommand($command);
-//        }
-
         $text = "$callback_data: Hello World!";
+
         $data = [
             'callback_query_id' => $callback_query_id,
             'text'              => $text,
-            'show_alert'        => true,
+            'show_alert'        => false,
             'cache_time'        => 5,
         ];
 

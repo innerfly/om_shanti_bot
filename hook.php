@@ -22,13 +22,8 @@ try {
 
     // Logging (Error, Debug and Raw Updates)
     TelegramLog::initErrorLog(__DIR__ . "/logs/error.log");
-    TelegramLog::initDebugLog(__DIR__ . "/logs/debug.log");
-    TelegramLog::initUpdateLog(__DIR__ . "/logs/update.log");
-
-//    CallbackqueryCommand::addCallbackHandler(function (CallbackQuery $query) use ($telegram) {
-//        $command = $query->getData();
-//        $telegram->executeCommand($command);
-//    });
+//    TelegramLog::initDebugLog(__DIR__ . "/logs/debug.log");
+//    TelegramLog::initUpdateLog(__DIR__ . "/logs/update.log");
 
     // Requests Limiter (tries to prevent reaching Telegram API limits)
     //    $telegram->enableLimiter();

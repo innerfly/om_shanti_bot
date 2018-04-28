@@ -61,17 +61,16 @@ class StartCommand extends SystemCommand
 
         $text = '🕉 Namaste! 🕉' . PHP_EOL . '/weather or /help to see all commands!';
 
-        $inline_keyboard = new InlineKeyboard([
-            ['text' => 'Weather', 'callback_data' => 'weather'],
-            ['text' => 'Start', 'callback_data' => 'start'],
-            ['text' => 'Help', 'callback_data' => 'help'],
-        ]);
-
+//        $inline_keyboard = new InlineKeyboard([
+//            ['text' => 'Weather', 'callback_data' => 'weather'],
+//            ['text' => 'Start', 'callback_data' => 'start'],
+//            ['text' => 'Help', 'callback_data' => 'help'],
+//        ]);
 
         $data = [
             'chat_id' => $chat_id,
             'text' => $text,
-            'reply_markup' => $inline_keyboard,
+//            'reply_markup' => $inline_keyboard,
         ];
 
         return Request::sendMessage($data);

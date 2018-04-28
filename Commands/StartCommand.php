@@ -12,6 +12,7 @@ namespace Longman\TelegramBot\Commands\SystemCommands;
 
 use Longman\TelegramBot\Commands\SystemCommand;
 use Longman\TelegramBot\Commands\UserCommands\WeatherCommand;
+use Longman\TelegramBot\Entities\InlineKeyboard;
 use Longman\TelegramBot\Request;
 
 /**
@@ -55,21 +56,21 @@ class StartCommand extends SystemCommand
     public function execute()
     {
         $message = $this->getMessage();
-
         $chat_id = $message->getChat()->getId();
+
         $text    = '🕉 Namaste! 🕉' . PHP_EOL . '/weather or /help to see all commands!';
 
-        $inline_keyboard = new InlineKeyboard(
-            [
-                ['text' => 'callback', 'callback_data' => 'weather'],
-                ['text' => 'open url', 'url' => 'https://github.com/php-telegram-bot/core'],
-            ]
-        );
+//        $inline_keyboard = new InlineKeyboard(
+//            [
+//                ['text' => 'callback', 'callback_data' => 'weather'],
+//                ['text' => 'open url', 'url' => 'https://github.com/php-telegram-bot/core'],
+//            ]
+//        );
 
         $data = [
             'chat_id' => $chat_id,
             'text'    => $text,
-            'reply_markup' => $inline_keyboard,
+//            'reply_markup' => $inline_keyboard,
         ];
 
         return Request::sendMessage($data);
